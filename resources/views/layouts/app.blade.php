@@ -23,7 +23,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md shadow-sm" style="background-color: #101C51">
+        <nav class="navbar navbar-expand-md shadow-sm" style="background-color: #236130">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}" style="font-weight: bold; color: white">
                     S-Wallet
@@ -38,27 +38,33 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         @auth
-                            @if (Auth::user()->role_id === 1)
-                                <li class="nav-item">
-                                    <a class="nav-link {{ $page == 'Home' ? 'active' : '' }}" aria-current="page"
-                                        href="{{ route('home') }}">Home</a>
-                                </li>
-                            @endif
-                            @if (Auth::user()->role_id === 4)
-                                <li class="nav-item">
-                                    <a class="nav-link {{ $page == 'Home' ? 'active' : '' }}" aria-current="page"
-                                        href="{{ route('home') }}">Home</a>
-                                </li>
-                            @endif
+                            
                             @if (Auth::user()->role_id === 3)
                                 <li class="nav-item">
                                     <a class="nav-link {{ $page == 'Home' ? 'active' : '' }}" aria-current="page"
-                                        href="{{ route('home') }}">Home</a>
+                                        href="{{ route('home') }}" style="color: white">Home</a>
+                                </li>
+                            @endif
+                            @if (Auth::user()->role_id === 2)
+                                <li class="nav-item">
+                                    <a class="nav-link {{ $page == 'Home' ? 'active' : '' }}" aria-current="page"
+                                        href="{{ route('home') }}"  style="color: white">Home</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link {{ $page == 'Menu' ? 'active' : '' }}"
                                         href="{{ route('menu') }}">Menu</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ $page == 'Menu' ? 'active' : '' }}"
+                                        href="{{ route('data_transaksi') }}"  style="color: white">Data Transaksi</a>
+                                </li>
+                            @endif
+                            @if (Auth::user()->role_id === 1)
+                                <li class="nav-item">
+                                    <a class="nav-link {{ $page == 'Home' ? 'active' : '' }}" aria-current="page"
+                                        href="{{ route('home') }}"  style="color: white">Home</a>
+                                </li>
+                                
                             @endif
                         @endauth
                     </ul>
@@ -81,7 +87,7 @@
                         @else
                             <li class="nav-item dropdown" style="color: white">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color: white">
                                     {{ Auth::user()->name }} ({{ Auth::user()->role->name }})
                                 </a>
 

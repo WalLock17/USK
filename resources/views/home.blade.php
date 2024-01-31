@@ -20,19 +20,15 @@ $page = 'Home';
                         @endif
 
                         @if (Auth::user()->role_id === 1)
-                            <div class="row">
-                                <div class="card col" style="width: 100px; height: 100px; align-items:center; justify-content:center; margin:5px; background-color: #95B3ED">
-                                    <a href="{{ route('data_user') }}"
-                                        style="color: white;text-decoration:none;font-size:18px">User
-                                        List</a>
+                            
                                 </div>
                                 <div class="card col" style="width: 100px; height: 100px; align-items:center; justify-content:center; margin:5px; background-color: #95B3ED">
                                     <a href="{{ route('data_transaksi') }}"
                                         style="color: white;text-decoration:none;font-size:18px">Transaksi</a>
                                 </div>
-                            </div>  
+
                         @endif
-                        @if (Auth::user()->role_id === 4)
+                        @if (Auth::user()->role_id === 3)
                             <div class="row">
                                 <div class="card col" style="width: 100px; height: 100px; align-items:center; justify-content:center; margin:5px; background-color: #95B3ED">
                                     <a href="{{ route('topup') }}"
@@ -42,9 +38,14 @@ $page = 'Home';
                                     <a href="{{ route('transaksi') }}"
                                         style="color: white;text-decoration:none;font-size:18px">Canteen</a>
                                 </div>
+                                <div class="card col" style="width: 100px; height: 100px; align-items:center; justify-content:center; margin:5px; background-color: #95B3ED">
+                                    <a href="{{ route('tariktunai') }}"
+                                        style="color: white;text-decoration:none;font-size:18px">Withdraw</a>
+                                </div>
                             </div>  
                         @endif
-                        @if (Auth::user()->role_id === 2)
+                        @if (Auth::user()->role_id === 1)
+
                             <table class="table table-bordered border-dark table-striped">
                                 <thead>
                                     <tr>
@@ -52,6 +53,7 @@ $page = 'Home';
                                         <th>Name</th>
                                         <th>Nominal</th>
                                         <th>Action</th>
+                                        <th>Tarik Tunai</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -70,12 +72,23 @@ $page = 'Home';
                                                     Decline
                                                 </a>
                                             </td>
+                                            <td>
+                                                <a href="{{ route('tariktunai.setuju', ['transaksi_id' => $pengajuan->id]) }}"
+                                                    class="btn btn-primary">
+                                                    Accept
+                                                </a>
+                                                <a href="{{ route('tariktunai.tolak', ['transaksi_id' => $pengajuan->id]) }}"
+                                                    class="btn btn-danger">
+                                                    Decline
+                                                </a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
+            </div>
                         @endif
-                        @if (Auth::user()->role_id === 3)
+                        @if (Auth::user()->role_id === 2)
                             <table class="table table-bordered border-dark table-striped">
                                 <thead>
                                     <tr>
